@@ -17,26 +17,32 @@ class Cookbook
     @recipes
   end
 
+  def find(index)
+    return @recipes[index] # returns an INSTANCE
+  end
+
   def remove(index)
     @recipes.delete_at(index)
     save_csv
   end
 
-  private
 
   def save_csv
     CSV.open(@csv_file_path, 'wb') do |csv|
+      csv << ['name', 'description', 'prep_time', 'difficulty', 'done']
       @recipes.each do |recipe|
-        # csv << [recipe.name, recipe.description]
+        # csv << [recipe.name, recipe.description, re]
         csv << recipe.to_a
       end
     end
-
   end
 
+  private
+
   def load_csv
-    CSV.foreach(@csv_file_path) do |row|
-      @recipes << Recipe.new(row[0], row[1])
+    CSV.foreach(@csv_file_path, headers: :first_row, header_converters: :symbol) do |row|
+      row[:done] = (row[:done] == "true")
+      @recipes << Recipe.new(row)
     end
   end
 end

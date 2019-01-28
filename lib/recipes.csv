@@ -1,5 +1,5 @@
-Crumpets,Crumpets description
-Beans & Bacon breakfast,Beans description
-Plum pudding,Pudding description
-Apple pie,Apple pie description
-pizza,dough with stuff on it
+name,description,prep_time,difficulty,done
+Beef samosas,Starter,25 min,Moderate,true
+name,desc,12,hard,true
+last_eample,asdasd,12,easy,false
+"Foie gras, Mango and Gingerbread Checkerboard",Starter,30 min,Very easy,false
